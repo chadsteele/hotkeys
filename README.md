@@ -14,7 +14,7 @@ Optional parameters [scope, callback]...
 The default scope is the whole document and the default callback is to click the first child.  Keep in mind, you can map more than one key, since keys attribute accepts a string or an array of strings
 
 ```javascript
-        <HotKey keys={["ArrowUp"] scope={window.document} callback={myfunc}>
+        <HotKey keys={["ArrowUp"]} scope={window.document} callback={myfunc}>
            <SomeClickableComponent />
         </HotKey>
 ```
