@@ -3,10 +3,11 @@ import { useEffect } from 'react'
 
 export function HotKey(props){
 
+    const scope = props.scope || window.parent
     useEffect(()=>{
-        window.document.addEventListener("keydown",onKeydown)
+        scope.addEventListener("keydown",onKeydown)
         return ()=>{
-            window.document.removeEventListener('keydown',onKeydown)
+            scope.removeEventListener('keydown',onKeydown)
         }
     })
 
