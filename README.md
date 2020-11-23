@@ -4,7 +4,17 @@ So, I was looking for this for longer than it took to write and so, I thought I'
 Usage...
 
 ```javascript
-        <HotKey keys={["ArrowUp"]}>
+        <HotKey keys={["ArrowUp"] }>
+           <SomeClickableComponent />
+        </HotKey>
+```
+
+Optional parameters [scope, callback]...
+
+The default scope is the whole document and the default callback is to click the first child.  Keep in mind, you can map more than one key, since keys attribute accepts a string or an array of strings
+
+```javascript
+        <HotKey keys={["ArrowUp"] scope={window.document} callback={myfunc}>
            <SomeClickableComponent />
         </HotKey>
 ```
@@ -17,10 +27,11 @@ import { useEffect } from 'react'
 
 export function HotKey(props){
 
+    const scope = props.scope || window.parent
     useEffect(()=>{
-        window.document.addEventListener("keydown",onKeydown)
+        scope.addEventListener("keydown",onKeydown)
         return ()=>{
-            window.document.removeEventListener('keydown',onKeydown)
+            scope.removeEventListener('keydown',onKeydown)
         }
     })
 
@@ -42,8 +53,8 @@ export function HotKey(props){
 }
 
 export default HotKey
-
 ```
 
-documentation [dev.to](https://dev.to/chadsteele/hotkeys-in-react-3ej6-temp-slug-9005949/edit)
 git [https://github.com/chadsteele/hotkeys](https://github.com/chadsteele/hotkeys)
+
+doc [https://dev.to/chadsteele/how-to-add-hotkeys-in-react-4610](https://dev.to/chadsteele/how-to-add-hotkeys-in-react-4610)
