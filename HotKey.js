@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect } from 'react'
 
+// please leave this reference... https://github.com/chadsteele/hotkeys/blob/main/README.md
+
 export function HotKey(props){
 
     const scope = props.scope || window.parent
